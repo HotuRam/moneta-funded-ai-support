@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moneta Funded Support Center — AI Desk & Drawdown Utility | Case Study #02</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            mf: {
+              bg: '#030805',
+              surface: '#08120c',
+              card: '#0c1911',
+              border: '#173021',
+              green: '#16f467',
+              greenHover: '#0fd858',
+              emerald: '#10b981'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #030805;
+      color: #e6f0ea;
+      overflow-x: hidden;
+    }
+    .hero-matrix {
+      background-image:
+        radial-gradient(circle at 50% 22%, rgba(22, 244, 103, 0.16), transparent 54%),
+        radial-gradient(rgba(22, 244, 103, 0.13) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #050c08; }
+    ::-webkit-scrollbar-thumb { background: #193825; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #16f467; }
+    @keyframes pulseDot {
+      0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+      40% { opacity: 1; transform: translateY(-3px); }
+    }
+    .dot-bounce { animation: pulseDot 1.1s infinite ease-in-out; }
+    .dot-bounce:nth-child(2) { animation-delay: 0.16s; }
+    .dot-bounce:nth-child(3) { animation-delay: 0.32s; }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+  <!-- Sticky Top Navbar -->
+  <header class="sticky top-0 z-40 border-b border-mf-border/80 bg-[#040a06]/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 shrink-0">
+        <div class="w-8 h-8 rounded-full border-[3.5px] border-mf-green flex items-center justify-center shadow-[0_0_16px_rgba(22,244,103,0.35)]">
+          <div class="w-2.5 h-2.5 rounded-full bg-mf-green/30"></div>
+        </div>
+        <div class="leading-none">
+          <div class="flex items-center gap-2">
+            <span class="font-bold tracking-wider text-white text-sm sm:text-base">MONETA</span>
+            <span class="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-md bg-mf-card border border-mf-border text-slate-300 font-medium">
+              Support Center
+            </span>
+            <span class="hidden md:inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-mf-green/10 border border-mf-green/30 text-mf-green">
+              <span class="w-1.5 h-1.5 rounded-full bg-mf-green animate-pulse"></span>
+              24/7 Desk • Online
+            </span>
+          </div>
+          <span class="text-[9px] font-mono tracking-[0.28em] text-mf-green uppercase">FUNDED</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-medium text-slate-300">
+        <a href="#ai-desk" class="hover:text-mf-green transition">AI Assistant</a>
+        <a href="#calculator" class="hover:text-mf-green transition">Drawdown Calculator</a>
+        <a href="#rulebook" class="hover:text-mf-green transition">Rulebook &amp; FAQ</a>
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
+          Case Study #02 · Hotu Ram
+        </span>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="nav-submit-ticket" type="button" class="px-4 py-2 rounded-lg bg-mf-green hover:bg-mf-greenHover text-[#031208] font-semibold text-xs sm:text-sm shadow-[0_0_18px_rgba(22,244,103,0.28)] transition">
+          Submit Ticket
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="hero-matrix border-b border-mf-border/60 pt-10 pb-12 px-4">
+    <div class="max-w-4xl mx-auto text-center space-y-5">
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1b11]/90 border border-mf-green/30 text-[11px] sm:text-xs font-mono text-slate-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-mf-green"></span>
+        <span>Limited-Time Offer: Use <strong class="text-mf-green">FRIDAYDROP</strong> for 55% Off</span>
+        <span class="text-slate-600">•</span>
+        <span>Up to <strong class="text-white">100%</strong> Profit Split (Sprint)</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+        Moneta Funded <span class="text-mf-green">Support Center</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Instant answers on <strong class="text-white">1-Step Daily</strong>, <strong class="text-white">Instant Pro</strong>, <strong class="text-white">Phoenix $2M Scaling</strong>, MT5 &amp; MatchTrader execution, 22:00 UTC rollover rules, and 24–48h payouts.
+      </p>
+
+      <!-- Centered Hero Search Bar -->
+      <form id="hero-search-form" class="max-w-2xl mx-auto pt-2">
+        <div class="flex items-center bg-[#07110b] border border-mf-border focus-within:border-mf-green rounded-xl p-1.5 shadow-xl shadow-black/40 transition">
+          <svg class="w-5 h-5 text-slate-400 ml-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.64 5.64a7.5 7.5 0 0 0 10.61 10.61Z" />
+          </svg>
+          <input
+            id="hero-search-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Ask anything about 1-Step Daily, 22:00 UTC rollover, news rules, or 2x broker payout..."
+            class="flex-1 bg-transparent px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none"
+          />
+          <button type="submit" class="px-5 py-2.5 rounded-lg bg-mf-green hover:bg-mf-greenHover text-[#031208] font-semibold text-sm transition shrink-0">
+            Ask AI
+          </button>
+        </div>
+      </form>
+
+      <!-- Quick Topic Pills -->
+      <div id="hero-chips" class="max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 pt-1"></div>
+
+      <!-- Trust Strip -->
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-mono text-slate-400">
+        <span><strong class="text-mf-green">100%</strong> Broker-Backed (Moneta Markets)</span>
+        <span>★ Trustpilot <strong class="text-white">4.6</strong> (363 reviews)</span>
+        <span>★ PropFirmMatch <strong class="text-white">4.8</strong> (129 reviews)</span>
+        <span>22:00 UTC Reset in <strong id="hero-utc-countdown" class="text-mf-green">--:--:--</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 py-10 space-y-14 flex-1">
+
+    <!-- 2-Column Workspace: AI Desk + Drawdown Calculator -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- LEFT COLUMN: AI Support Desk -->
+      <div id="ai-desk" class="lg:col-span-7 bg-mf-surface border border-mf-border rounded-2xl shadow-2xl shadow-black/50 flex flex-col h-[640px] overflow-hidden scroll-mt-20">
+        <div class="px-4 py-3.5 border-b border-mf-border bg-[#0b1911] flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-mf-green/10 border border-mf-green/35 flex items-center justify-center text-mf-green shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-sm font-semibold text-white">Moneta Funded AI Support Desk</h2>
+                <span id="ai-mode-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-mf-green/15 border border-mf-green/35 text-mf-green">
+                  Rulebook AI
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-400">Trained on verified Moneta Funded challenge rules &amp; Nov 2026 Terms</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-xs font-mono">
+            <button id="open-api-modal" type="button" title="Optionally connect your own Gemini or Groq API key in this browser session" class="px-2.5 py-1.5 rounded-lg bg-[#07110b] border border-mf-border hover:border-mf-green text-slate-300 hover:text-mf-green transition">
+              ⚡ Live LLM
+            </button>
+            <button id="chat-reset" type="button" class="px-2.5 py-1.5 rounded-lg bg-[#07110b] border border-mf-border hover:border-slate-500 text-slate-300 hover:text-white transition">
+              Reset
+            </button>
+            <button id="chat-escalate" type="button" class="px-2.5 py-1.5 rounded-lg bg-mf-green/10 border border-mf-green/40 hover:bg-mf-green/20 text-mf-green transition">
+              Escalate Ticket
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-stream" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 text-sm"></div>
+
+        <!-- Composer -->
+        <div class="p-3.5 border-t border-mf-border bg-[#07110b]">
+          <form id="chat-form" class="flex items-center gap-2">
+            <input
+              id="chat-input"
+              type="text"
+              autocomplete="off"
+              placeholder="Type your question (e.g., 'Who are you?', 'Can I hold over the weekend?', '1-Step Daily rules')..."
+              class="flex-1 bg-mf-surface border border-mf-border focus:border-mf-green focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 transition"
+            />
+            <button type="submit" class="px-4 py-2.5 rounded-xl bg-mf-green hover:bg-mf-greenHover text-[#031208] font-semibold text-sm transition shrink-0">
+              Send →
+            </button>
+          </form>
+          <div class="flex items-center justify-between mt-2 px-1 text-[10px] font-mono text-slate-500">
+            <span>Responses reflect verified public rules. Escalate for account-specific reviews.</span>
+            <span class="text-mf-green/80">support@monetafunded.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Live Risk Utility (Drawdown & Risk Calculator) -->
+      <div id="calculator" class="lg:col-span-5 bg-mf-surface border border-mf-border rounded-2xl p-5 shadow-2xl shadow-black/50 space-y-4 scroll-mt-20">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <span class="inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-mf-green/15 border border-mf-green/35 text-mf-green mb-1.5">
+              Live Risk Utility
+            </span>
+            <h2 class="text-lg font-bold text-white">Drawdown &amp; Risk Calculator</h2>
+            <p class="text-xs text-slate-400">Verify your exact 22:00 UTC daily breach &amp; single-symbol floating cap.</p>
+          </div>
+          <div class="text-right font-mono text-[10px] bg-[#07110b] border border-mf-border rounded-lg px-2.5 py-1.5 shrink-0">
+            <span class="text-slate-400 block">UTC CLOCK</span>
+            <span id="calc-utc-time" class="text-mf-green font-semibold">--:--:--</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">Select Program</label>
+          <select id="calc-program" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none">
+            <option value="1-Step Daily">1-Step Daily (1% Daily / 2% Static Max)</option>
+            <option value="One-Step">One-Step (3% Daily / 5% Trailing · 1% Float Breach)</option>
+            <option value="Two-Step Standard">Two-Step Standard (5% Daily / 10% Static Max)</option>
+            <option value="Two-Step Low-Cost">Two-Step Low-Cost (4% Daily / 8% Static Max)</option>
+            <option value="Instant Funding">Instant Funding (3% Daily / 5% Trailing Max)</option>
+            <option value="Instant Pro">Instant Pro (4% Daily / 8% Trailing · 4% Profit Cap)</option>
+            <option value="Phoenix Instant">Phoenix Instant (3% Daily / 6% Static Max)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">Select Account Size</label>
+          <div id="size-buttons" class="grid grid-cols-4 gap-2">
+            <button type="button" data-size="10000" class="size-btn py-2 rounded-lg text-xs font-mono border border-mf-border bg-[#07110b] text-slate-300 hover:border-mf-green transition">$10,000</button>
+            <button type="button" data-size="50000" class="size-btn py-2 rounded-lg text-xs font-mono border border-mf-green bg-mf-green/15 text-mf-green font-semibold transition">$50,000</button>
+            <button type="button" data-size="100000" class="size-btn py-2 rounded-lg text-xs font-mono border border-mf-border bg-[#07110b] text-slate-300 hover:border-mf-green transition">$100,000</button>
+            <button type="button" data-size="200000" class="size-btn py-2 rounded-lg text-xs font-mono border border-mf-border bg-[#07110b] text-slate-300 hover:border-mf-green transition">$200,000</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">22:00 UTC Balance ($)</label>
+            <input id="calc-bal" type="number" value="50000" step="100" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">22:00 UTC Equity ($)</label>
+            <input id="calc-eq" type="number" value="50000" step="100" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+          <span class="text-slate-400">Test scenario:</span>
+          <button type="button" id="scen-profit" class="px-2.5 py-1 rounded-md bg-[#07110b] border border-mf-border hover:border-mf-green text-slate-200 transition">+4% Floating Profit</button>
+          <button type="button" id="scen-dd" class="px-2.5 py-1 rounded-md bg-[#07110b] border border-mf-border hover:border-amber-400 text-slate-200 transition">-2% Drawdown</button>
+          <button type="button" id="scen-reset" class="px-2.5 py-1 rounded-md bg-[#07110b] border border-mf-border hover:border-slate-500 text-slate-400 hover:text-white transition">Reset</button>
+        </div>
+
+        <div id="calc-cards" class="grid grid-cols-2 gap-3"></div>
+
+        <p id="calc-footnote" class="text-[11px] text-slate-400 leading-relaxed pt-1 border-t border-mf-border/70"></p>
+      </div>
+    </section>
+
+    <!-- BOTTOM SECTION: OFFICIAL RULEBOOK — Rules, Payouts & FAQ -->
+    <section id="rulebook" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-mf-green">Verified Prop Rulebook</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Rules, Payouts &amp; FAQ</h2>
+        </div>
+        <div id="rule-tabs" class="flex flex-wrap gap-1.5 bg-mf-surface p-1.5 rounded-xl border border-mf-border text-xs font-medium"></div>
+      </div>
+
+      <div id="rule-kpis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+      <div id="faq-list" class="space-y-3"></div>
+    </section>
+
+    <!-- Human Specialist CTA Banner -->
+    <section class="bg-gradient-to-r from-[#0a1a10] via-[#0c2114] to-[#08150d] border border-mf-green/25 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shadow-xl">
+      <div class="space-y-1.5">
+        <h3 class="text-lg sm:text-xl font-bold text-white">Still need a human specialist from our support desk?</h3>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl">
+          Open a structured priority ticket for KYC verification, Rise/Crypto payout tracking, Payout-to-Broker 2x bonus setup, or Risk Team reviews.
+        </p>
+      </div>
+      <button id="cta-submit-ticket" type="button" class="px-5 py-3 rounded-xl bg-mf-green hover:bg-mf-greenHover text-[#031208] font-bold text-sm shadow-[0_0_22px_rgba(22,244,103,0.3)] transition shrink-0">
+        Submit a Support Ticket
+      </button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-mf-border/80 bg-[#020604] mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-full border-[3px] border-mf-green"></div>
+          <div>
+            <p class="text-sm font-bold text-white tracking-wider">MONETA <span class="text-mf-green">FUNDED</span></p>
+            <p class="text-[11px] text-slate-400">Backed by Moneta Markets • Saint Lucia Registered • HQ Dubai, UAE</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+          <span class="text-mf-green">support@monetafunded.com</span>
+          <span class="text-slate-600">•</span>
+          <span class="text-slate-300">Case Study #02 Prototype by <strong class="text-white">Hotu Ram</strong></span>
+        </div>
+      </div>
+
+      <div class="border-t border-mf-border/60 pt-4 text-[11px] text-slate-500 leading-relaxed space-y-1.5">
+        <p>
+          <strong class="text-slate-400">Portfolio Prototype Disclaimer:</strong> This interactive Support Center is an independent proof-of-work demonstration built by Hotu Ram using publicly available Moneta Funded challenge rules and Terms &amp; Conditions (verified Nov 2026). It is not an official Moneta Funded website; always verify live rules on <span class="text-slate-300">monetafunded.com</span>.
+        </p>
+        <p>
+          Moneta Funded accounts operate in simulated trading environments with institutional liquidity feeds. Services are not offered to residents of restricted jurisdictions including Afghanistan, Cuba, Iran, Myanmar, North Korea, Thailand, UAE, Venezuela, Vietnam, and FATF/OFAC/EU/UN sanctioned territories.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: STRUCTURED TICKET ESCALATION -->
+  <div id="ticket-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-mf-surface border border-mf-border rounded-2xl max-w-lg w-full p-5 sm:p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-mf-border pb-3">
+        <div>
+          <span class="font-mono text-[10px] text-mf-green uppercase tracking-wider">Tier-2 Escalation Simulator</span>
+          <h3 class="text-base font-bold text-white">Submit a Priority Support Ticket</h3>
+        </div>
+        <button id="close-ticket" type="button" class="text-slate-400 hover:text-white text-xl px-2">&times;</button>
+      </div>
+      <form id="ticket-form" class="space-y-3 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-slate-400 mb-1">Account Login / ID</label>
+            <input id="t-id" type="text" required placeholder="e.g. MF-50K-41902" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-mono text-slate-400 mb-1">Platform</label>
+            <select id="t-plat" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none">
+              <option>MetaTrader 5 (MT5)</option>
+              <option>MatchTrader (MTR)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-mono text-slate-400 mb-1">Category</label>
+          <select id="t-cat" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none">
+            <option>Payout / Rise / Crypto Status</option>
+            <option>Payout-to-Broker (Moneta Markets 2x Bonus)</option>
+            <option>KYC Verification / Account Upgrade</option>
+            <option>Risk Review / Drawdown or Layering Inquiry</option>
+            <option>Affiliate / Dashboard Support</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-mono text-slate-400 mb-1">Issue Details</label>
+          <textarea id="t-note" rows="3" required placeholder="Include order ticket #, UTC timestamp, or payout request ID..." class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button id="cancel-ticket" type="button" class="px-4 py-2 rounded-lg border border-mf-border text-slate-300 hover:text-white">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-lg bg-mf-green hover:bg-mf-greenHover text-[#031208] font-bold">Submit Ticket</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: OPTIONAL LIVE LLM API KEY -->
+  <div id="api-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-mf-surface border border-mf-border rounded-2xl max-w-md w-full p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-mf-border pb-3">
+        <div>
+          <span class="font-mono text-[10px] text-mf-green uppercase tracking-wider">Optional Live LLM Mode</span>
+          <h3 class="text-base font-bold text-white">Connect Gemini or Groq API</h3>
+        </div>
+        <button id="close-api" type="button" class="text-slate-400 hover:text-white text-xl px-2">&times;</button>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        By default, this demo runs a zero-cost <strong class="text-white">Rulebook AI Engine</strong> safe for public hosting. To test live LLM responses locally, paste a free API key below (stored only in this browser tab; never uploaded).
+      </p>
+      <form id="api-form" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-mono text-slate-400 mb-1">Provider</label>
+          <select id="api-provider" class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none">
+            <option value="gemini">Google AI Studio (Gemini 2.5 Flash)</option>
+            <option value="groq">Groq Cloud (Llama 3.3 70B Versatile)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-mono text-slate-400 mb-1">API Key (Session Only)</label>
+          <input id="api-key-input" type="password" placeholder="Paste key or leave blank to use built-in engine..." class="w-full bg-[#07110b] border border-mf-border focus:border-mf-green rounded-lg px-3 py-2 text-white focus:outline-none" />
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <button id="clear-api-key" type="button" class="text-rose-400 hover:underline font-mono">Disconnect Key</button>
+          <div class="flex gap-2">
+            <button id="cancel-api" type="button" class="px-3 py-2 rounded-lg border border-mf-border text-slate-300">Cancel</button>
+            <button type="submit" class="px-4 py-2 rounded-lg bg-mf-green text-[#031208] font-bold">Activate</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const HERO_CHIPS = [
+        "How does 1-Step Daily work?",
+        "22:00 UTC Daily Loss calculation",
+        "Instant Pro vs Instant Funding",
+        "Payouts & 2x Moneta Markets bonus",
+        "News trading & prohibited rules",
+        "Phoenix $2M scaling & Sprint"
+      ];
+
+      const CALC_SPECS = {
+        "1-Step Daily": {
+          dailyPct: 0.01, maxPct: 0.02, maxType: "Static (Locks on Payout)",
+          floatLabel: "2% Floating Symbol Alert", floatPct: 0.02,
+          floatSub: "Triggers 1.5% risk-per-idea cap"
+        },
+        "One-Step": {
+          dailyPct: 0.03, maxPct: 0.05, maxType: "Trailing (Locks on Payout)",
+          floatLabel: "1% Single-Symbol Breach", floatPct: 0.01,
+          floatSub: "Strict instant breach on 1-Step"
+        },
+        "Two-Step Standard": {
+          dailyPct: 0.05, maxPct: 0.10, maxType: "Fixed Static Max Loss",
+          floatLabel: "3% Floating Symbol Alert", floatPct: 0.03,
+          floatSub: "Triggers 1.5% risk-per-idea cap"
+        },
+        "Two-Step Low-Cost": {
+          dailyPct: 0.04, maxPct: 0.08, maxType: "Fixed Static Max Loss",
+          floatLabel: "2% Floating Symbol Alert", floatPct: 0.02,
+          floatSub: "Triggers 1.5% risk-per-idea cap"
+        },
+        "Instant Funding": {
+          dailyPct: 0.03, maxPct: 0.05, maxType: "Trailing (Locks on Payout)",
+          floatLabel: "2% Floating Symbol Alert", floatPct: 0.02,
+          floatSub: "15% / 20% consistency rule applies"
+        },
+        "Instant Pro": {
+          dailyPct: 0.04, maxPct: 0.08, maxType: "Trailing (Locks on Payout)",
+          floatLabel: "4% Max Daily Profit Cap", floatPct: 0.04,
+          floatSub: "Auto-closes positions at +4%/day"
+        },
+        "Phoenix Instant": {
+          dailyPct: 0.03, maxPct: 0.06, maxType: "Fixed Static Max Loss",
+          floatLabel: "2% Floating Symbol Alert", floatPct: 0.02,
+          floatSub: "Auto-scales every 10% up to $2M"
+        }
+      };
+
+      const RULEBOOK_TABS = {
+        "1-Step Daily": {
+          kpis: [
+            { label: "Profit Target", val: "3%", sub: "Single Phase · Unlimited Time" },
+            { label: "Daily / Static Loss", val: "1% / 2%", sub: "Higher of Bal/Eq • Locks on Payout" },
+            { label: "Min Days / Consistency", val: "None / None", sub: "Pass in 1 trade or 1 day" },
+            { label: "Payouts & Split", val: "Daily · 88%", sub: "$100 min • $1K/$2K/$4K caps", accent: true }
+          ],
+          faqs: [
+            {
+              q: "How does the 1-Step Daily Challenge work?",
+              a: "Pass a single 3% profit target with no minimum trading days and no consistency rule. Risk limits are 1% daily drawdown (reset at 22:00 UTC) and 2% static maximum loss. Once funded, you can request an 88% split payout every profitable day."
+            },
+            {
+              q: "What are the daily payout caps and post-payout drawdown lock?",
+              a: "Minimum withdrawal is $100 (processed in 24–48 business hours). Per-request caps are $1,000 on $50K, $2,000 on $100K, and $4,000 on $200K accounts. Once your first payout is approved, your 2% static max loss locks at your original starting balance—so always leave a buffer before withdrawing."
+            },
+            {
+              q: "Is the challenge fee refunded on 1-Step Daily?",
+              a: "Yes—on 1-Step Daily, standard One-Step, and Two-Step challenges, the initial evaluation fee is refunded after your 4th payout on the same funded account."
+            }
+          ]
+        },
+        "2-Step & 1-Step": {
+          kpis: [
+            { label: "2-Step / 1-Step Target", val: "5%→10% / 10%", sub: "Closed positions only" },
+            { label: "2-Step Loss Options", val: "4%/8% or 5%/10%", sub: "Static Max Loss" },
+            { label: "Min Profitable Days", val: "3 Days", sub: "≥0.5% closed profit per day" },
+            { label: "2-Step Leverage", val: "1:100 FX", sub: "1:30 Metals • 1:25 Indices", accent: true }
+          ],
+          faqs: [
+            {
+              q: "What is the key difference between Two-Step and standard One-Step?",
+              a: "Two-Step offers higher leverage (up to 1:100 FX) and generous static drawdown (8% or 10% max loss) across Phase 1 (5%) and Phase 2 (10%). Standard One-Step has a single 10% target with 3% daily loss, 5% trailing drawdown (locks on payout), and a strict 1% single-symbol floating loss breach rule."
+            },
+            {
+              q: "What counts as a Minimum Profitable Day?",
+              a: "On One-Step, Two-Step (each phase), and Phoenix, a qualifying profitable day requires at least 0.5% closed profit of the initial account balance measured midnight-to-midnight server time."
+            },
+            {
+              q: "Which platforms can I use — MT5 or MatchTrader?",
+              a: "Both MetaTrader 5 (MT5) and MatchTrader (with integrated TradingView charts) are available. Note that MT5 is unavailable for residents of the USA and Canada—US/Canada traders use MatchTrader."
+            }
+          ]
+        },
+        "Instant & Pro": {
+          kpis: [
+            { label: "Evaluation Phase", val: "None", sub: "Funded from Day 1" },
+            { label: "Instant / Pro Loss", val: "3%/5% · 4%/8%", sub: "Trailing • Locks on Payout" },
+            { label: "Consistency / Daily Cap", val: "15-20% / 4% Cap", sub: "Consistency on Instant only" },
+            { label: "Instant Pro Payout", val: "On Demand", sub: "1st payout on demand, then 14d", accent: true }
+          ],
+          faqs: [
+            {
+              q: "Instant Funding vs. Instant Funding Pro — which should I choose?",
+              a: "Standard Instant Funding has 3% daily / 5% trailing loss, a 15% or 20% consistency rule (chosen at checkout), 60% or 88% split option, and 5-minute red-folder news restrictions. Instant Pro removes the consistency rule, allows news trading (no bracketing), offers 4% daily / 8% trailing loss, an 88% split, and 1st payout on demand—in exchange for a 4% daily profit cap that auto-closes trades."
+            },
+            {
+              q: "How does the 15% / 20% consistency rule work on Instant Funding?",
+              a: "Your single best trading day cannot exceed 15% (or 20% if purchased) of your total accumulated profit before requesting a payout. Once a payout is processed, the consistency calculation resets cleanly for the next cycle."
+            },
+            {
+              q: "Does trailing drawdown keep trailing after a payout?",
+              a: "Trailing drawdown stops trailing once it reaches your initial balance. On accounts opened after September 21, 2026, the Maximum Loss level locks at your initial starting balance the moment a payout is approved."
+            }
+          ]
+        },
+        "Phoenix & Sprint": {
+          kpis: [
+            { label: "Phoenix Scaling Cap", val: "$2,000,000", sub: "11 Levels • 10% per tier" },
+            { label: "Phoenix Loss Limits", val: "3% / 6%", sub: "Static Max Loss • News OK" },
+            { label: "Sprint Windows", val: "1h – 8h", sub: "2x / 5x Multipliers" },
+            { label: "Sprint Profit Split", val: "100%", sub: "Immediate Payout upon pass", accent: true }
+          ],
+          faqs: [
+            {
+              q: "How does Phoenix Instant scaling work up to $2,000,000?",
+              a: "Phoenix spans 11 tiers from $2,500 up to $2,000,000 (you can start at Levels 1–4). Reaching 10% profit with at least 3 profitable days (≥0.5% each) and all trades closed automatically scales your capital to the next level and converts your profit into withdrawable credit."
+            },
+            {
+              q: "How does the Sprint Challenge differ from standard accounts?",
+              a: "Sprint is a fast, time-boxed 1, 2, 4, or 8-hour challenge with 2x or 5x multipliers and a 100% profit split paid immediately upon completion. However, EAs, copy trading, news/gap/open/close trading, and site-wide promo codes are not allowed on Sprint."
+            },
+            {
+              q: "What is the maximum total capital allocation per trader?",
+              a: "Traders can hold up to $100K per program on Instant, Instant Pro, and 2-Step, up to $200K each on 1-Step and 1-Step Daily, and scale Phoenix up to $2M (with an overall maximum managed ceiling of $2.7M across programs)."
+            }
+          ]
+        },
+        "Payouts & Compliance": {
+          kpis: [
+            { label: "Payout Speed", val: "24–48 hrs", sub: "Min $100 ($500 via Rise)" },
+            { label: "Broker Bonus", val: "20% or 2x", sub: "Payout to Moneta Markets", accent: true },
+            { label: "Inactivity Limit", val: "30 Days", sub: "At least 1 trade every 30d" },
+            { label: "Commissions", val: "$4 / Lot", sub: "FX & Metals • $0 Indices/Crypto" }
+          ],
+          faqs: [
+            {
+              q: "How does the Payout-to-Broker (Moneta Markets) 2x bonus work?",
+              a: "Instead of withdrawing only to Rise or Crypto (USDT-TRC20 / USDT-ERC20 / USDC-ERC20), you can route payouts to a live Moneta Markets brokerage account to either keep the cash + 20% credit bonus, or convert the payout into a 100% matched credit bonus (non-withdrawable tradable margin; profits made from it are withdrawable)."
+            },
+            {
+              q: "What trading strategies are strictly prohibited?",
+              a: "Martingale, grid trading, cross-account hedging/reverse trading, latency arbitrage, news bracketing (straddles), HFT/tick scalping, excessive layering/hyperactivity, order spamming, demo glitch exploitation, evaluation gamification, and account sharing are strictly prohibited."
+            },
+            {
+              q: "Are EAs, copy trading, and weekend holding allowed?",
+              a: "Self-developed EAs are permitted on all programs except Sprint (no commercial/third-party EAs). Copy trading is allowed only between Moneta Funded accounts owned by the same individual (excluding Sprint). Overnight and weekend holding are allowed across standard models (triple swap Wednesday for FX/Metals, Friday for Indices)."
+            }
+          ]
+        }
+      };
+
+      const SYSTEM_CONTEXT_FOR_LLM =
+        "You are the Moneta Funded AI Support Desk (Case Study #02 prototype created by Hotu Ram). Be concise, accurate, friendly, and conversational. " +
+        "Key facts: Daily drawdown resets at 22:00 UTC using max(balance, equity) minus (initial balance * daily loss %). " +
+        "Models: 1-Step Daily (3% target, 1% daily, 2% static max locks on payout, no min days/consistency, 88% split, daily payouts $1K/$2K/$4K caps on 50K/100K/200K); " +
+        "One-Step (10% target, 3% daily, 5% trailing locks on payout, 1% single-symbol floating loss breach, 3 profitable days >=0.5%, 88% split, 14d payouts); " +
+        "Two-Step (5% P1, 10% P2, 4%/8% or 5%/10% static, 1:100 FX leverage, 3 days/phase, 88% split, 14d payouts); " +
+        "Instant Funding (no eval, 3% daily, 5% trailing locks on payout, 15%/20% consistency rule, 60% or 88% split, 14d payouts); " +
+        "Instant Pro (no eval, 4% daily, 8% trailing locks on payout, 4% daily profit cap, no consistency, news allowed, 88% split, 1st payout on demand then 14d); " +
+        "Phoenix Instant (11 levels $2.5K-$2M, 10% target + 3 days per level, 3% daily, 6% static, news allowed, 88% split, 14d payouts); " +
+        "Sprint (1h/2h/4h/8h, 2x/5x multipliers, 100% split immediate payout, no EAs/news/promos). " +
+        "News: 5-min before/after red-folder restriction on 1-Step/2-Step/Instant (2h prior-open close carve-out); allowed on Instant Pro & Phoenix (bracketing always banned). " +
+        "Platforms: MT5 (not available in USA/Canada) and MatchTrader. Commissions: $4/lot FX & Metals, $0 Indices/Energy/Crypto. Inactivity: 30 days. " +
+        "Payouts: $100 min ($500 Rise), 24-48h, Crypto/Rise/Moneta Markets (20% credit or 100% matched credit bonus). Fee refund after 4th payout on 1-Step/1-Step Daily/2-Step. " +
+        "Restricted countries: Afghanistan, Cuba, Iran, Myanmar, North Korea, Thailand, UAE, Venezuela, Vietnam. " +
+        "ANT/ANT24 Anthropic Share CFDs are a Moneta Markets broker launch, not a Moneta Funded challenge. Support email: support@monetafunded.com.";
+
+      const INTENTS = [
+        {
+          source: "Support Desk Identity",
+          test: (q) => /\b(who are you|what are you|your name|introduce yourself|are you a bot|are you ai|are you human|are you real)\b/.test(q),
+          reply: () => ({
+            text: "I’m the **Moneta Funded AI Support Assistant** — an interactive Tier-1 support desk prototype (**Case Study #02**) built by **Hotu Ram**.\n\nI’m trained on Moneta Funded’s verified challenge rules and Terms to help traders instantly check **1-Step Daily**, **Instant Pro**, **22:00 UTC rollover math**, **news windows**, **payouts**, and **platform eligibility** — or escalate complex tickets cleanly to the human desk.",
+            followUps: ["Who built this prototype?", "Which account is best for me?", "How does the 22:00 UTC reset work?"]
+          })
+        },
+        {
+          source: "Case Study #02",
+          test: (q) => /\b(who built|who made|who created|hotu|developer|author|portfolio)\b/.test(q),
+          reply: () => ({
+            text: "This Support Center was engineered by **Hotu Ram** (IIT Patna MSc Physics alumnus, funded prop trader, MQL5/Pine Script developer, and prop-firm Discord support specialist) as **Case Study #02**.\n\nIt demonstrates how a branded support hub + live 22:00 UTC Drawdown Calculator + Tier-2 ticket triage reduces repetitive Discord ticket volume.",
+            followUps: ["How does 1-Step Daily work?", "Instant Pro vs Instant Funding", "Escalate a ticket"]
+          })
+        },
+        {
+          source: "Moneta Support Desk",
+          test: (q) => /^(hi|hello|hey|yo|gm|good morning|good afternoon|good evening|namaste|hola|sup|how are you|whats up|what's up)[\s!?.]*$/.test(q) || /\b(how are you doing|how are you)\b/.test(q),
+          reply: () => ({
+            text: "Hey! 👋 Welcome to the **Moneta Funded Support Center**.\n\nI’m online and ready to help with challenge comparisons, **22:00 UTC daily loss resets**, **news rules**, **MT5/MatchTrader availability**, or **payouts & Moneta Markets bonuses**. What can I check for you?",
+            followUps: ["How does 1-Step Daily work?", "News trading & prohibited rules", "Payouts & 2x Moneta Markets bonus"]
+          })
+        },
+        {
+          source: "Support Desk",
+          test: (q) => /\b(thank you|thanks|thx|awesome|great|nice|cool|perfect|bye|goodbye)\b/.test(q) && q.length < 40,
+          reply: () => ({
+            text: "Happy to help! 🙌 If you want to test exact breach floors, try the **Drawdown & Risk Calculator** right next to this chat — or click **Escalate Ticket** anytime.",
+            followUps: ["Phoenix $2M scaling & Sprint", "Which countries are restricted?"]
+          })
+        },
+        {
+          source: "Escalation Desk",
+          test: (q) => /\b(human|real person|live agent|support team|email|discord|ticket|speak to|talk to|appeal|escalate)\b/.test(q),
+          reply: () => ({
+            text: "**Need a Human Support or Risk Specialist?**\n• **Official Email:** `support@monetafunded.com` (official live support is also available 24/7 via Moneta Funded’s Help Center and Discord).\n• Click **Escalate Ticket** at the top of this chat to submit your Account ID, platform (MT5/MatchTrader), and summary in a structured Tier-2 format.",
+            followUps: ["News trading & prohibited rules", "Payouts & 2x Moneta Markets bonus"]
+          })
+        },
+        {
+          source: "Challenge Matcher",
+          test: (q) => /\b(which account|best account|best challenge|recommend|should i buy|which one|for beginners|for scalpers|for swing)\b/.test(q),
+          reply: () => ({
+            text: "**Quick Moneta Funded Account Matcher:**\n• **Daily Payouts & Fastest Pass:** **1-Step Daily** (`3%` target, `1%` daily / `2%` static max, no min days, daily payouts at `88%`).\n• **Highest Leverage & Widest Buffer:** **Two-Step** (`1:100` FX leverage, `5%` daily / `10%` static max).\n• **Day-1 Funding + News Trading:** **Instant Pro** (no eval, no consistency, news OK, 1st payout on demand; `4%` daily profit cap).\n• **Long-Term Scaling to $2M:** **Phoenix Instant** (`6%` static loss, news OK, scales every `10%`).\n• **High-Speed 1–8h Payouts:** **Sprint Challenge** (`100%` profit split upon completion).",
+            followUps: ["How does 1-Step Daily work?", "Instant Pro vs Instant Funding", "Phoenix $2M scaling & Sprint"]
+          })
+        },
+        {
+          source: "General Rules § Rollover",
+          test: (q) => /\b(22:00|10pm|10:00 pm|rollover|daily drawdown|daily loss|reset)\b/.test(q),
+          reply: () => ({
+            text: "**22:00 UTC Daily Drawdown Calculation:**\n• At **22:00 UTC (10:00 PM UTC)** each day, the system takes the **higher of your Balance or Equity** and subtracts your daily loss allowance (based on **initial account size**, including swaps & commissions).\n• **Limits:** `1%` (1-Step Daily), `3%` (One-Step, Instant, Phoenix), `4%` (Instant Pro), `4% or 5%` (Two-Step).\n• Try clicking **`+4% Floating Profit`** in the calculator on the right to see how floating gains across rollover raise your breach floor.",
+            followUps: ["How does trailing drawdown work?", "Can I hold trades over the weekend?"]
+          })
+        },
+        {
+          source: "1-Step Daily Rulebook",
+          test: (q) => /\b(1-step daily|one-step daily|one step daily|daily payout)\b/.test(q),
+          reply: () => ({
+            text: "**1-Step Daily Challenge:**\n• **Target:** `3%` single phase (unlimited time, no minimum trading days, no consistency rule).\n• **Loss Limits:** `1%` Daily Loss | `2%` Static Max Loss (**locks at starting balance** once a payout is approved).\n• **Payouts:** Eligible **daily** at an **88% split** (`$100` min; capped at `$1,000` on $50K, `$2,000` on $100K, `$4,000` on $200K per request).\n• **Fee Refund:** Refunded after your **4th payout**.",
+            followUps: ["22:00 UTC Daily Loss calculation", "Instant Pro vs Instant Funding"]
+          })
+        },
+        {
+          source: "Instant & Pro Comparison",
+          test: (q) => /\b(instant pro|instant funding|consistency|profit cap|15%|20%|on demand|compare|\bvs\b)\b/.test(q),
+          reply: () => ({
+            text: "**Instant Funding vs. Instant Funding Pro:**\n• **Instant Funding:** `3%` daily / `5%` trailing max (locks on payout), **15% or 20% consistency rule** (resets per payout), `60%` or `88%` split chosen at purchase, 14-day payouts, 5-min news block.\n• **Instant Pro:** `4%` daily / `8%` trailing max (locks on payout), **no consistency rule**, **news trading allowed**, **88% split**, **1st payout on demand** (then every 14d), and a **4% max profit per day** auto-close cap.",
+            followUps: ["News trading & prohibited rules", "Payouts & 2x Moneta Markets bonus"]
+          })
+        },
+        {
+          source: "Phoenix & Sprint Rulebook",
+          test: (q) => /\b(phoenix|scaling|2m|2 million|sprint|multiplier|100% split)\b/.test(q),
+          reply: () => ({
+            text: "**Phoenix Instant ($2M Scaling) & Sprint Challenge:**\n• **Phoenix Instant:** 11 levels from `$2,500` to `$2,000,000` (start at Levels 1–4). Hit **10% profit** + **3 profitable days** (`≥0.5%` each) with all trades closed to auto-scale; profits carry over as withdrawable credit. `3%` daily / `6%` static max, **news allowed**, `88%` split.\n• **Sprint Challenge:** Time-boxed `1h / 2h / 4h / 8h` mini-challenges (`2x/5x` multipliers) paying a **100% profit split** immediately upon completion (no EAs, copy trading, news, or promo codes).",
+            followUps: ["Payouts & 2x Moneta Markets bonus", "Can I use EAs or copy trading?"]
+          })
+        },
+        {
+          source: "Two-Step & One-Step",
+          test: (q) => /\b(2-step|two-step|two step|1-step|one-step|one step|phase 1|phase 2|floating loss|trailing|static|max loss)\b/.test(q),
+          reply: () => ({
+            text: "**Two-Step & Standard One-Step Parameters:**\n• **Two-Step:** `5%` P1 → `10%` P2 (`3` profitable days ≥`0.5%`/phase), `4%/8%` or `5%/10%` static loss, **1:100 FX leverage**, `88%` split every 14 days.\n• **Standard One-Step:** `10%` target (`3` profitable days), `3%` daily / `5%` trailing max (locks on payout), and a **strict 1% single-symbol floating loss instant breach**.\n• **Fee Refund:** Challenge fee refunded after your **4th payout** on both models.",
+            followUps: ["22:00 UTC Daily Loss calculation", "Can US or Canada traders use MT5?"]
+          })
+        },
+        {
+          source: "Payout & Broker Policy",
+          test: (q) => /\b(payout|withdraw|rise|crypto|usdt|usdc|moneta markets|bonus|2x|double|split|kyc|refund|how fast)\b/.test(q),
+          reply: () => ({
+            text: "**Payouts, Speed, Refunds & Moneta Markets 2x Bonus:**\n• **Speed & Minimum:** `$100` minimum (`$500` via Rise), processed in **24–48 business hours** after KYC approval.\n• **Methods:** Crypto (`USDT-TRC20`, `USDT-ERC20`, `USDC-ERC20`), **Rise** (bank transfer), or **Payout to Broker (Moneta Markets)**.\n• **Moneta Markets Bonus:** Sending payouts to a live Moneta Markets account gives you either **Cash + 20% credit bonus** or a **100% matched credit bonus** (tradable margin; profits are withdrawable).\n• **Refunds:** 14-day refund if zero trades placed; evaluation fee refunded after your **4th payout** on 1-Step, 1-Step Daily, and 2-Step.",
+            followUps: ["How does 1-Step Daily work?", "Which countries are restricted?"]
+          })
+        },
+        {
+          source: "News & Compliance",
+          test: (q) => /\b(news|red folder|cpi|nfp|fomc|bracketing|prohibit|banned|martingale|grid|hedg|layering|hyperactiv|hft|arbitrage|scalp|hold time)\b/.test(q),
+          reply: () => ({
+            text: "**News Trading & Prohibited Strategies:**\n• **News Rules:** Restricted **5 min before & after** ForexFactory red-folder events on 1-Step, 1-Step Daily, 2-Step, and Instant Funding (trades opened **≥2 hours prior** may close inside the window, including TP/SL). **Allowed** on **Instant Pro** and **Phoenix**.\n• **Always Banned:** News bracketing (straddles), Martingale, Grid trading, Cross-account/reverse hedging, Latency arbitrage, HFT/tick scalping, Excessive layering & hyperactivity, Order spamming, and Account sharing.\n• **Hold Time:** No fixed minimum seconds rule—legitimate discretionary scalping is allowed.",
+            followUps: ["Can I use EAs or copy trading?", "Escalate a ticket"]
+          })
+        },
+        {
+          source: "Platforms, EAs & Conditions",
+          test: (q) => /\b(ea|eas|bot|copy trad|mt5|mt4|matchtrader|usa|united states|canada|weekend|overnight|swap|leverage|commission|spread|inactiv|30 day)\b/.test(q),
+          reply: () => ({
+            text: "**Platforms, EAs, Weekend Holding & Trading Conditions:**\n• **Platforms:** **MT5** (unavailable in **USA & Canada**) and **MatchTrader** (TradingView built-in; no MT4).\n• **EAs & Copy Trading:** Self-developed EAs allowed (except Sprint; no commercial EAs). Copy trading allowed only between your own Moneta Funded accounts.\n• **Weekend Holding & Swaps:** Allowed across standard programs (triple swap: **Wed** for FX/Metals, **Fri** for Indices).\n• **Commissions & Inactivity:** `$4/lot` round-trip on FX & Metals (`$0` Indices/Energy/Crypto). Must place ≥1 trade every **30 calendar days**.",
+            followUps: ["Which countries are restricted?", "How does 1-Step Daily work?"]
+          })
+        },
+        {
+          source: "Eligibility & Ecosystem",
+          test: (q) => /\b(restrict|country|countries|jurisdiction|uae|iran|vietnam|thailand|ant24|\bant\b|anthropic|free trial|x-tools|promo|fridaydrop|discount|ceo|david bily|legit|trustpilot)\b/.test(q),
+          reply: () => ({
+            text: "**Eligibility, Free Trial, Promo & Broker Distinction:**\n• **Restricted Jurisdictions:** Afghanistan, Cuba, Iran, Myanmar, North Korea, Thailand, UAE, Venezuela, Vietnam, and FATF/OFAC/EU/UN sanctioned territories.\n• **Credibility & Perks:** Backed by **Moneta Markets** (CEO **David Bily**, `4.6/5` Trustpilot across 363 reviews, `4.8/5` PropFirmMatch). Includes a reopenable **Free Trial Account** and free **X-Tools**.\n• **Promo:** `FRIDAYDROP` (55% Off, limited time; excludes Sprint).\n• **`ANT` / `ANT24` Clarification:** 24-hour Anthropic Share CFDs are a **Moneta Markets** broker launch, not a Moneta Funded challenge model.",
+            followUps: ["Who are you?", "Which account is best for me?"]
+          })
+        }
+      ];
+
+      function runLocalEngine(rawQuery) {
+        const q = rawQuery.toLowerCase().trim();
+        for (let i = 0; i < INTENTS.length; i++) {
+          if (INTENTS[i].test(q)) {
+            const out = INTENTS[i].reply(q);
+            return { text: out.text, source: INTENTS[i].source, followUps: out.followUps || [] };
+          }
+        }
+        return {
+          text: "I didn’t find a direct rulebook match for `\"" + rawQuery.slice(0, 55) + "\"` — I specialize in **Moneta Funded** accounts, 22:00 UTC drawdown math, payouts, and trading rules.\n\nTry one of the topics below, or click **⚡ Live LLM** in the chat header to connect a live Gemini/Groq API key for open-ended conversation.",
+          source: "Smart Clarification",
+          followUps: ["Who are you?", "Which account is best for me?", "22:00 UTC Daily Loss calculation", "Escalate a ticket"]
+        };
+      }
+
+      async function runLiveLLM(query, provider, apiKey) {
+        if (provider === "gemini") {
+          const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(apiKey);
+          const resp = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: SYSTEM_CONTEXT_FOR_LLM }] },
+              contents: [{ role: "user", parts: [{ text: query }] }]
+            })
+          });
+          if (!resp.ok) throw new Error("Gemini API status " + resp.status);
+          const data = await resp.json();
+          const text = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] ? data.candidates[0].content.parts[0].text : null;
+          if (!text) throw new Error("Empty Gemini reply");
+          return { text: text, source: "Gemini 2.5 Flash (Live)", followUps: ["22:00 UTC Daily Loss calculation", "Instant Pro vs Instant Funding"] };
+        } else {
+          const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + apiKey
+            },
+            body: JSON.stringify({
+              model: "llama-3.3-70b-versatile",
+              messages: [
+                { role: "system", content: SYSTEM_CONTEXT_FOR_LLM },
+                { role: "user", content: query }
+              ],
+              temperature: 0.3
+            })
+          });
+          if (!resp.ok) throw new Error("Groq API status " + resp.status);
+          const data = await resp.json();
+          const text = data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : null;
+          if (!text) throw new Error("Empty Groq reply");
+          return { text: text, source: "Groq Llama 3.3 (Live)", followUps: ["22:00 UTC Daily Loss calculation", "Payouts & 2x Moneta Markets bonus"] };
+        }
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function formatRich(s) {
+        return escapeHtml(s)
+          .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
+          .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[#050d08] border border-mf-border text-mf-green font-mono text-[11px]">$1</code>')
+          .replace(/\n/g, "<br>");
+      }
+
+      function nowTime() {
+        return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      }
+
+      function fmtUSD(n) {
+        return "$" + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function updateClocks() {
+        const now = new Date();
+        const utc = now.toISOString().substr(11, 8) + " UTC";
+        const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 22, 0, 0));
+        if (now >= target) target.setUTCDate(target.getUTCDate() + 1);
+        const diff = Math.max(0, target - now);
+        const h = String(Math.floor(diff / 3600000)).padStart(2, "0");
+        const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+
+        const elH = document.getElementById("hero-utc-countdown");
+        const elC = document.getElementById("calc-utc-time");
+        if (elH) elH.textContent = h + "h " + m + "m " + s + "s";
+        if (elC) elC.textContent = utc;
+      }
+
+      function init() {
+        const heroChips = document.getElementById("hero-chips");
+        const heroForm = document.getElementById("hero-search-form");
+        const heroInput = document.getElementById("hero-search-input");
+        const chatStream = document.getElementById("chat-stream");
+        const chatForm = document.getElementById("chat-form");
+        const chatInput = document.getElementById("chat-input");
+        const aiBadge = document.getElementById("ai-mode-badge");
+
+        // Modals
+        const ticketModal = document.getElementById("ticket-modal");
+        const apiModal = document.getElementById("api-modal");
+        const openTicket = () => { ticketModal.classList.remove("hidden"); ticketModal.classList.add("flex"); };
+        const closeTicket = () => { ticketModal.classList.add("hidden"); ticketModal.classList.remove("flex"); };
+        const openApi = () => {
+          document.getElementById("api-provider").value = sessionStorage.getItem("mf_ai_provider") || "gemini";
+          document.getElementById("api-key-input").value = sessionStorage.getItem("mf_ai_key") || "";
+          apiModal.classList.remove("hidden");
+          apiModal.classList.add("flex");
+        };
+        const closeApi = () => { apiModal.classList.add("hidden"); apiModal.classList.remove("flex"); };
+
+        ["nav-submit-ticket", "chat-escalate", "cta-submit-ticket"].forEach(id => {
+          document.getElementById(id).addEventListener("click", openTicket);
+        });
+        ["close-ticket", "cancel-ticket"].forEach(id => {
+          document.getElementById(id).addEventListener("click", closeTicket);
+        });
+        ticketModal.addEventListener("click", e => { if (e.target === ticketModal) closeTicket(); });
+
+        document.getElementById("open-api-modal").addEventListener("click", openApi);
+        ["close-api", "cancel-api"].forEach(id => {
+          document.getElementById(id).addEventListener("click", closeApi);
+        });
+        apiModal.addEventListener("click", e => { if (e.target === apiModal) closeApi(); });
+
+        function syncApiBadge() {
+          const key = sessionStorage.getItem("mf_ai_key");
+          const prov = sessionStorage.getItem("mf_ai_provider") || "gemini";
+          if (key) {
+            aiBadge.textContent = prov === "gemini" ? "Gemini Live" : "Groq Live";
+            aiBadge.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-400 text-[#031208] font-bold";
+          } else {
+            aiBadge.textContent = "Rulebook AI";
+            aiBadge.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-mf-green/15 border border-mf-green/35 text-mf-green";
+          }
+        }
+
+        document.getElementById("api-form").addEventListener("submit", e => {
+          e.preventDefault();
+          const prov = document.getElementById("api-provider").value;
+          const key = document.getElementById("api-key-input").value.trim();
+          if (key) {
+            sessionStorage.setItem("mf_ai_provider", prov);
+            sessionStorage.setItem("mf_ai_key", key);
+          } else {
+            sessionStorage.removeItem("mf_ai_key");
+          }
+          syncApiBadge();
+          closeApi();
+        });
+
+        document.getElementById("clear-api-key").addEventListener("click", () => {
+          sessionStorage.removeItem("mf_ai_key");
+          document.getElementById("api-key-input").value = "";
+          syncApiBadge();
+          closeApi();
+        });
+
+        document.getElementById("ticket-form").addEventListener("submit", e => {
+          e.preventDefault();
+          const id = document.getElementById("t-id").value.trim();
+          const plat = document.getElementById("t-plat").value;
+          const cat = document.getElementById("t-cat").value;
+          const note = document.getElementById("t-note").value.trim();
+          const ref = "MF-" + Math.floor(100000 + Math.random() * 900000);
+          closeTicket();
+          document.getElementById("ai-desk").scrollIntoView({ behavior: "smooth", block: "center" });
+          appendBot({
+            text: "✅ **Priority Support Ticket Created (`" + ref + "`)**\n• **Account ID:** `" + id + "` (" + plat + ")\n• **Department:** " + cat + "\n• **Summary:** " + note + "\n\n*Demo Simulation:* In production, this structured payload posts directly to Discord/Zendesk so Tier-2 agents resolve in one touch.",
+            source: "Ticket Triage Desk",
+            followUps: ["Payouts & 2x Moneta Markets bonus", "News trading & prohibited rules"]
+          });
+          document.getElementById("ticket-form").reset();
+        });
+
+        function appendUser(text) {
+          const wrap = document.createElement("div");
+          wrap.className = "flex justify-end";
+          wrap.innerHTML =
+            '<div class="max-w-[82%] space-y-1">' +
+              '<div class="flex justify-end gap-2 text-[10px] font-mono text-slate-500"><span>You</span><span>' + nowTime() + '</span></div>' +
+              '<div class="rounded-2xl rounded-tr-sm px-4 py-2.5 bg-mf-green/15 border border-mf-green/40 text-white text-sm">' + escapeHtml(text) + '</div>' +
+            '</div>';
+          chatStream.appendChild(wrap);
+          chatStream.scrollTop = chatStream.scrollHeight;
+        }
+
+        function showTyping() {
+          const row = document.createElement("div");
+          row.id = "mf-typing";
+          row.className = "flex justify-start";
+          row.innerHTML =
+            '<div class="rounded-2xl rounded-tl-sm px-4 py-3 bg-[#0c1911] border border-mf-border flex items-center gap-2">' +
+              '<span class="text-xs font-mono text-mf-green">Moneta AI is thinking</span>' +
+              '<span class="flex gap-1">' +
+                '<span class="w-1.5 h-1.5 rounded-full bg-mf-green dot-bounce"></span>' +
+                '<span class="w-1.5 h-1.5 rounded-full bg-mf-green dot-bounce"></span>' +
+                '<span class="w-1.5 h-1.5 rounded-full bg-mf-green dot-bounce"></span>' +
+              '</span>' +
+            '</div>';
+          chatStream.appendChild(row);
+          chatStream.scrollTop = chatStream.scrollHeight;
+        }
+
+        function hideTyping() {
+          const el = document.getElementById("mf-typing");
+          if (el) el.remove();
+        }
+
+        function appendBot(res) {
+          const wrap = document.createElement("div");
+          wrap.className = "flex justify-start";
+
+          const col = document.createElement("div");
+          col.className = "max-w-[90%] space-y-2";
+
+          const box = document.createElement("div");
+          box.className = "rounded-2xl rounded-tl-sm px-4 py-3.5 bg-[#0c1911] border border-mf-border text-slate-200 leading-relaxed space-y-2";
+
+          box.innerHTML =
+            '<div class="flex items-center justify-between gap-3 text-[10px] font-mono border-b border-mf-border/70 pb-1.5">' +
+              '<span class="text-mf-green font-semibold">Moneta Funded Support AI · ' + escapeHtml(res.source || "Rulebook") + '</span>' +
+              '<span class="text-slate-500">' + nowTime() + '</span>' +
+            '</div>' +
+            '<div>' + formatRich(res.text) + '</div>';
+
+          col.appendChild(box);
+
+          if (res.followUps && res.followUps.length) {
+            const chips = document.createElement("div");
+            chips.className = "flex flex-wrap gap-1.5";
+            res.followUps.forEach(item => {
+              const b = document.createElement("button");
+              b.type = "button";
+              b.className = "text-[11px] px-2.5 py-1 rounded-full bg-[#07110b] border border-mf-border hover:border-mf-green text-slate-300 hover:text-mf-green transition";
+              b.textContent = "↳ " + item;
+              b.addEventListener("click", () => {
+                if (item.toLowerCase().includes("escalate") || item.toLowerCase().includes("ticket")) {
+                  openTicket();
+                } else {
+                  handleSend(item);
+                }
+              });
+              chips.appendChild(b);
+            });
+            col.appendChild(chips);
+          }
+
+          wrap.appendChild(col);
+          chatStream.appendChild(wrap);
+          chatStream.scrollTop = chatStream.scrollHeight;
+        }
+
+        async function handleSend(rawText) {
+          const query = rawText.trim();
+          if (!query) return;
+          appendUser(query);
+          showTyping();
+
+          const apiKey = sessionStorage.getItem("mf_ai_key");
+          const provider = sessionStorage.getItem("mf_ai_provider") || "gemini";
+
+          if (apiKey) {
+            try {
+              const liveRes = await runLiveLLM(query, provider, apiKey);
+              hideTyping();
+              appendBot(liveRes);
+              return;
+            } catch (err) {
+              hideTyping();
+              const fb = runLocalEngine(query);
+              fb.source = "Rulebook Fallback (API error)";
+              appendBot(fb);
+              return;
+            }
+          }
+
+          setTimeout(() => {
+            hideTyping();
+            appendBot(runLocalEngine(query));
+          }, 300);
+        }
+
+        function resetChat() {
+          chatStream.innerHTML = "";
+          appendBot({
+            text: "Welcome to **Moneta Funded Support**. Ask me about **1-Step Daily** (3% target, daily payouts), **Instant Pro** (news trading OK, 1st payout on demand), **Phoenix $2M scaling**, **22:00 UTC rollover**, or **2x Moneta Markets payout bonuses** — or simply say hi!",
+            source: "Online · Ready",
+            followUps: ["Who are you?", "Which account is best for me?", "22:00 UTC Daily Loss calculation"]
+          });
+        }
+
+        chatForm.addEventListener("submit", e => {
+          e.preventDefault();
+          const v = chatInput.value.trim();
+          if (!v) return;
+          chatInput.value = "";
+          handleSend(v);
+        });
+
+        heroForm.addEventListener("submit", e => {
+          e.preventDefault();
+          const v = heroInput.value.trim();
+          if (!v) return;
+          heroInput.value = "";
+          document.getElementById("ai-desk").scrollIntoView({ behavior: "smooth", block: "center" });
+          handleSend(v);
+        });
+
+        document.getElementById("chat-reset").addEventListener("click", resetChat);
+
+        // Hero Chips
+        HERO_CHIPS.forEach(text => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "px-3.5 py-2 rounded-lg bg-[#09150d] border border-mf-border hover:border-mf-green text-xs text-slate-300 hover:text-mf-green transition";
+          btn.textContent = text;
+          btn.addEventListener("click", () => {
+            document.getElementById("ai-desk").scrollIntoView({ behavior: "smooth", block: "center" });
+            handleSend(text);
+          });
+          heroChips.appendChild(btn);
+        });
+
+        // Calculator
+        let selectedSize = 50000;
+        const progEl = document.getElementById("calc-program");
+        const balEl = document.getElementById("calc-bal");
+        const eqEl = document.getElementById("calc-eq");
+        const cardsEl = document.getElementById("calc-cards");
+        const footEl = document.getElementById("calc-footnote");
+        const sizeBtns = document.querySelectorAll(".size-btn");
+
+        function updateCalculator() {
+          const spec = CALC_SPECS[progEl.value];
+          const bal = parseFloat(balEl.value) || selectedSize;
+          const eq = parseFloat(eqEl.value) || selectedSize;
+
+          const refBase = Math.max(bal, eq);
+          const refTag = eq > bal ? "Equity" : bal > eq ? "Balance" : "Equal";
+          const dailyAllow = selectedSize * spec.dailyPct;
+          const dailyBreach = refBase - dailyAllow;
+          const maxLossAmt = selectedSize * spec.maxPct;
+          const maxFloor = selectedSize - maxLossAmt;
+          const floatAmt = selectedSize * spec.floatPct;
+
+          cardsEl.innerHTML =
+            '<div class="bg-[#07110b] border border-mf-border rounded-xl p-3.5 space-y-1">' +
+              '<div class="flex items-center justify-between text-[11px] text-slate-400">' +
+                '<span>Reference Base</span>' +
+                '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-mf-green/10 text-mf-green">' + refTag + '</span>' +
+              '</div>' +
+              '<p class="text-lg font-bold font-mono text-white">' + fmtUSD(refBase) + '</p>' +
+              '<p class="text-[10px] text-slate-500">Higher of Balance / Equity</p>' +
+            '</div>' +
+            '<div class="bg-[#07110b] border border-mf-border rounded-xl p-3.5 space-y-1">' +
+              '<span class="text-[11px] text-slate-400 block">' + (spec.dailyPct * 100).toFixed(0) + '% Daily Loss Allowance</span>' +
+              '<p class="text-lg font-bold font-mono text-mf-green">' + fmtUSD(dailyAllow) + '</p>' +
+              '<p class="text-[10px] font-mono text-rose-400">Breach at: ' + fmtUSD(dailyBreach) + '</p>' +
+            '</div>' +
+            '<div class="bg-[#07110b] border border-mf-border rounded-xl p-3.5 space-y-1">' +
+              '<span class="text-[11px] text-slate-400 block">' + (spec.maxPct * 100).toFixed(0) + '% Max Loss Floor</span>' +
+              '<p class="text-lg font-bold font-mono text-rose-400">' + fmtUSD(maxFloor) + '</p>' +
+              '<p class="text-[10px] text-slate-500">' + escapeHtml(spec.maxType) + '</p>' +
+            '</div>' +
+            '<div class="bg-[#07110b] border border-mf-border rounded-xl p-3.5 space-y-1">' +
+              '<span class="text-[11px] text-slate-400 block">' + escapeHtml(spec.floatLabel) + '</span>' +
+              '<p class="text-lg font-bold font-mono text-amber-300">' + fmtUSD(floatAmt) + '</p>' +
+              '<p class="text-[10px] text-slate-500">' + escapeHtml(spec.floatSub) + '</p>' +
+            '</div>';
+
+          footEl.innerHTML =
+            '<strong class="text-slate-300">Note:</strong> Daily loss resets at <span class="text-mf-green font-mono">22:00 UTC</span> based on the higher of your balance or equity minus <span class="text-white">' +
+            (spec.dailyPct * 100).toFixed(0) + '%</span> of your initial balance (including swaps &amp; commissions).';
+        }
+
+        sizeBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            selectedSize = parseInt(btn.getAttribute("data-size"), 10);
+            sizeBtns.forEach(b => {
+              const active = parseInt(b.getAttribute("data-size"), 10) === selectedSize;
+              b.className = active
+                ? "size-btn py-2 rounded-lg text-xs font-mono border border-mf-green bg-mf-green/15 text-mf-green font-semibold transition"
+                : "size-btn py-2 rounded-lg text-xs font-mono border border-mf-border bg-[#07110b] text-slate-300 hover:border-mf-green transition";
+            });
+            balEl.value = selectedSize;
+            eqEl.value = selectedSize;
+            updateCalculator();
+          });
+        });
+
+        document.getElementById("scen-profit").addEventListener("click", () => {
+          balEl.value = selectedSize;
+          eqEl.value = Math.round(selectedSize * 1.04);
+          updateCalculator();
+        });
+        document.getElementById("scen-dd").addEventListener("click", () => {
+          balEl.value = selectedSize;
+          eqEl.value = Math.round(selectedSize * 0.98);
+          updateCalculator();
+        });
+        document.getElementById("scen-reset").addEventListener("click", () => {
+          balEl.value = selectedSize;
+          eqEl.value = selectedSize;
+          updateCalculator();
+        });
+        [progEl, balEl, eqEl].forEach(el => {
+          el.addEventListener("input", updateCalculator);
+          el.addEventListener("change", updateCalculator);
+        });
+
+        // Rulebook Tabs & Accordions
+        let activeRuleTab = "1-Step Daily";
+        const tabsEl = document.getElementById("rule-tabs");
+        const kpisEl = document.getElementById("rule-kpis");
+        const faqEl = document.getElementById("faq-list");
+
+        function renderRulebook() {
+          tabsEl.innerHTML = "";
+          Object.keys(RULEBOOK_TABS).forEach(name => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            const act = name === activeRuleTab;
+            btn.className = act
+              ? "px-3.5 py-2 rounded-lg bg-mf-green text-[#031208] font-bold transition"
+              : "px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition";
+            btn.textContent = name;
+            btn.addEventListener("click", () => {
+              activeRuleTab = name;
+              renderRulebook();
+            });
+            tabsEl.appendChild(btn);
+          });
+
+          const data = RULEBOOK_TABS[activeRuleTab];
+          kpisEl.innerHTML = data.kpis.map(k =>
+            '<div class="bg-mf-surface border border-mf-border rounded-xl p-4 space-y-1">' +
+              '<span class="text-xs text-slate-400 block">' + escapeHtml(k.label) + '</span>' +
+              '<p class="text-xl font-bold ' + (k.accent ? 'text-mf-green' : 'text-white') + '">' + escapeHtml(k.val) + '</p>' +
+              '<span class="text-[11px] text-slate-500 block">' + escapeHtml(k.sub) + '</span>' +
+            '</div>'
+          ).join("");
+
+          faqEl.innerHTML = "";
+          data.faqs.forEach((item, idx) => {
+            const card = document.createElement("div");
+            card.className = "bg-mf-surface border border-mf-border rounded-xl overflow-hidden";
+
+            const header = document.createElement("button");
+            header.type = "button";
+            header.className = "w-full px-5 py-4 text-left flex items-center justify-between gap-4 hover:bg-[#0d1d13] transition";
+            header.innerHTML =
+              '<span class="text-sm font-semibold text-white">' + escapeHtml(item.q) + '</span>' +
+              '<svg class="w-4 h-4 text-mf-green transition-transform duration-200 shrink-0 ' + (idx === 0 ? 'rotate-180' : '') + '" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>';
+
+            const body = document.createElement("div");
+            body.className = "px-5 pb-4 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-mf-border/50 pt-3 " + (idx === 0 ? "" : "hidden");
+            body.textContent = item.a;
+
+            header.addEventListener("click", () => {
+              const hidden = body.classList.toggle("hidden");
+              const svg = header.querySelector("svg");
+              svg.classList.toggle("rotate-180", !hidden);
+            });
+
+            card.appendChild(header);
+            card.appendChild(body);
+            faqEl.appendChild(card);
+          });
+        }
+
+        syncApiBadge();
+        resetChat();
+        updateCalculator();
+        renderRulebook();
+        updateClocks();
+        setInterval(updateClocks, 1000);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
