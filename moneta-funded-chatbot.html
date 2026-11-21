@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moneta Funded AI Support Prototype — Case Study #02 | Hotu Ram</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#060d1b',
+              900: '#0a192f',
+              800: '#112240',
+              700: '#1d3557',
+            },
+            cyan: {
+              400: '#64ffda',
+              500: '#38bdf8',
+            }
+          },
+          fontFamily: {
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0a192f; }
+    ::-webkit-scrollbar-thumb { background: #1d3557; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #64ffda; }
+  </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Top Bar -->
+  <header class="border-b border-slate-800 bg-navy-900/90 backdrop-blur sticky top-0 z-20">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-xs px-2.5 py-1 rounded bg-cyan-400/10 border border-cyan-400/40 text-cyan-400">
+          CASE STUDY #02
+        </span>
+        <div>
+          <h1 class="text-base sm:text-lg font-semibold text-white">Moneta Funded — AI Trader Support Agent</h1>
+          <p class="text-xs text-slate-400">Independent Support &amp; Rulebook Prototype by <span class="text-slate-200 font-medium">Hotu Ram</span></p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-xs font-mono">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          Rules Synced (Nov 2026)
+        </span>
+        <a href="ai-support-chatbots.html" class="px-3 py-1.5 rounded bg-navy-800 border border-slate-700 hover:border-cyan-400 text-slate-200 transition">
+          ← Back to Case Studies
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Left Column: Program Selector & Rule Quick-Reference -->
+    <aside class="lg:col-span-4 space-y-4">
+      <div class="bg-navy-900 border border-slate-800 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-sm font-mono uppercase tracking-wider text-cyan-400">Challenge Lens</h2>
+          <span class="text-[11px] text-slate-400">7 Models</span>
+        </div>
+        <p class="text-xs text-slate-400 mb-3">Select a model to inspect or ask targeted support questions:</p>
+        <div id="model-pills" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div id="model-card" class="bg-navy-900 border border-slate-800 rounded-xl p-4 space-y-2.5 text-xs"></div>
+
+      <div class="bg-navy-900/70 border border-amber-500/30 rounded-xl p-4 text-xs text-slate-300 space-y-1.5">
+        <p class="font-mono text-amber-300 uppercase tracking-wider text-[11px]">Demo &amp; Verification Note</p>
+        <p class="text-slate-400 leading-relaxed">
+          Unofficial portfolio prototype built from public Moneta Funded challenge rules and Terms &amp; Conditions. Always verify live parameters on <span class="text-slate-200">monetafunded.com</span> before trading.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Right Column: Interactive Chat Window -->
+    <section class="lg:col-span-8 bg-navy-900 border border-slate-800 rounded-xl flex flex-col h-[72vh] min-h-[520px]">
+      <div class="px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-white">24/7 Rulebook &amp; Support Assistant</p>
+          <p class="text-xs text-slate-400">Answers drawdowns, rollover reset (22:00 UTC), consistency, news rules, payouts &amp; EAs</p>
+        </div>
+        <button id="clear-chat" type="button" class="text-xs font-mono text-slate-400 hover:text-cyan-400 px-2.5 py-1 rounded border border-slate-800 hover:border-cyan-400/40 transition">
+          Reset Chat
+        </button>
+      </div>
+
+      <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 text-sm"></div>
+
+      <div class="px-4 pt-2 pb-1 border-t border-slate-800/70 bg-navy-950/40">
+        <div id="quick-prompts" class="flex gap-2 overflow-x-auto pb-2 text-xs"></div>
+      </div>
+
+      <form id="chat-form" class="p-3 border-t border-slate-800 flex gap-2 bg-navy-900 rounded-b-xl">
+        <input
+          id="chat-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ask about 1-Step Daily, 22:00 UTC reset, Instant Pro news rules, payouts, EAs, or ANT24..."
+          class="flex-1 bg-navy-950 border border-slate-700 focus:border-cyan-400 focus:outline-none rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-slate-500"
+        />
+        <button
+          type="submit"
+          class="px-4 py-2.5 rounded-lg bg-cyan-400 text-navy-950 font-semibold text-sm hover:bg-cyan-300 transition shrink-0"
+        >
+          Send
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    const MODELS = {
+      "1-Step Daily": {
+        target: "3% profit target (1 phase)",
+        dailyLoss: "1% of initial balance (equity incl. floating)",
+        maxLoss: "2% static (locks at starting balance once payout is approved)",
+        minDays: "None",
+        consistency: "None",
+        news: "5-min red-folder restriction (2h pre-event close carve-out)",
+        payouts: "Daily eligible ($100 min; caps apply on $50K/$100K/$200K requests)",
+        split: "88% profit split",
+        notes: "Fast, accuracy-focused single-phase model on MT5 and MatchTrader."
+      },
+      "One-Step": {
+        target: "10% profit target (1 phase)",
+        dailyLoss: "3% of initial balance",
+        maxLoss: "5% trailing with lock (1% single-symbol floating loss breach)",
+        minDays: "3 profitable days (>=0.5% closed profit each)",
+        consistency: "None",
+        news: "No opening/closing within 5 mins before/after high-impact news",
+        payouts: "Every 14 days after funding ($100 min; 24-48h processing)",
+        split: "88% profit split",
+        notes: "Self-developed EAs allowed; check active terms for trailing lock details."
+      },
+      "Two-Step": {
+        target: "5% (Phase 1) -> 10% (Phase 2)",
+        dailyLoss: "4% or 5% depending on configuration/add-on",
+        maxLoss: "8% or 10% static depending on configuration/add-on",
+        minDays: "3 profitable days per phase (>=0.5% each)",
+        consistency: "None",
+        news: "5-min red-folder restriction (2h pre-event open carve-out)",
+        payouts: "Every 14 days after funding ($100 min)",
+        split: "88% profit split",
+        notes: "Higher leverage up to 1:100 on FX; up to 1:30 metals, 1:25 indices."
+      },
+      "Instant Funding": {
+        target: "None (funded from day one)",
+        dailyLoss: "3% of initial balance",
+        maxLoss: "5% trailing (stops trailing once at starting balance)",
+        minDays: "None",
+        consistency: "15% or 20% best-day cap selected at purchase (resets per payout)",
+        news: "5-min red-folder restriction",
+        payouts: "Every 14 days ($100 min)",
+        split: "60% or 88% chosen at purchase",
+        notes: "Always verify which profit split and consistency tier you selected at checkout."
+      },
+      "Instant Pro": {
+        target: "None (funded from day one)",
+        dailyLoss: "4% of initial balance",
+        maxLoss: "8% trailing",
+        minDays: "None",
+        consistency: "None (4% maximum profit per day cap applies)",
+        news: "News trading allowed",
+        payouts: "First payout on demand once eligible ($100 min), then every 14 days",
+        split: "88% profit split",
+        notes: "Built for traders wanting immediate funding, news freedom, and no consistency rule."
+      },
+      "Phoenix Instant": {
+        target: "10% per scaling level",
+        dailyLoss: "3% of initial balance",
+        maxLoss: "6% static",
+        minDays: "3 profitable days (>=0.5% each) for level-up/payout eligibility",
+        consistency: "None",
+        news: "News trading allowed",
+        payouts: "Every 14 days ($100 min); scales across tiers up to $2,000,000",
+        split: "88% profit split",
+        notes: "Reaching 10% converts profit into withdrawable credit on the next tier."
+      },
+      "Sprint Challenge": {
+        target: "Multiplier-based target (2x / 5x)",
+        dailyLoss: "0.6%–3% depending on tier",
+        maxLoss: "0.3%–1.5% static depending on tier",
+        minDays: "Time-boxed 1h, 2h, 4h, or 8h session",
+        consistency: "N/A (short-window challenge)",
+        news: "No news, gap, market-open, or market-close trading",
+        payouts: "Immediate payout upon completion",
+        split: "Up to 100% profit split",
+        notes: "EAs and copy trading are not allowed on Sprint accounts."
+      }
+    };
+
+    const QUICK_PROMPTS = [
+      "How does the 22:00 UTC daily drawdown reset work?",
+      "Compare 1-Step Daily vs Instant Pro",
+      "Where is news trading allowed?",
+      "What are the payout methods & Moneta Markets bonus?",
+      "Which strategies and jurisdictions are restricted?",
+      "What is ANT / ANT24 vs Moneta Funded?"
+    ];
+
+    let activeModel = "1-Step Daily";
+
+    const pillsContainer = document.getElementById("model-pills");
+    const modelCard = document.getElementById("model-card");
+    const chatMessages = document.getElementById("chat-messages");
+    const quickPrompts = document.getElementById("quick-prompts");
+    const chatForm = document.getElementById("chat-form");
+    const chatInput = document.getElementById("chat-input");
+
+    function renderModelCard() {
+      const m = MODELS[activeModel];
+      modelCard.innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <span class="font-semibold text-white text-sm">${activeModel}</span>
+          <span class="font-mono text-cyan-400">${m.split}</span>
+        </div>
+        <div class="space-y-1.5 text-slate-300">
+          <p><span class="text-slate-400">Target:</span> ${m.target}</p>
+          <p><span class="text-slate-400">Daily Loss:</span> ${m.dailyLoss}</p>
+          <p><span class="text-slate-400">Max Loss:</span> ${m.maxLoss}</p>
+          <p><span class="text-slate-400">Profitable Days:</span> ${m.minDays}</p>
+          <p><span class="text-slate-400">Consistency:</span> ${m.consistency}</p>
+          <p><span class="text-slate-400">News Rule:</span> ${m.news}</p>
+          <p><span class="text-slate-400">Payouts:</span> ${m.payouts}</p>
+        </div>
+        <p class="text-[11px] text-slate-400 pt-1 border-t border-slate-800/80">${m.notes}</p>
+      `;
+    }
+
+    function renderPills() {
+      pillsContainer.innerHTML = "";
+      Object.keys(MODELS).forEach((name) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        const isActive = name === activeModel;
+        btn.className = `px-2.5 py-1 rounded text-xs font-mono transition border ${
+          isActive
+            ? "bg-cyan-400/15 border-cyan-400 text-cyan-300"
+            : "bg-navy-950 border-slate-800 text-slate-400 hover:text-white hover:border-slate-600"
+        }`;
+        btn.textContent = name;
+        btn.onclick = () => {
+          activeModel = name;
+          renderPills();
+          renderModelCard();
+          appendMessage("bot", `Switched focus to **${name}**. Ask me anything about its targets, drawdown, payouts, or rules—or click a quick prompt below.`);
+        };
+        pillsContainer.appendChild(btn);
+      });
+    }
+
+    function formatMarkdownLite(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
+        .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 rounded bg-navy-950 text-cyan-300 font-mono text-xs">$1</code>')
+        .replace(/\n/g, "<br>");
+    }
+
+    function appendMessage(sender, text) {
+      const wrapper = document.createElement("div");
+      wrapper.className = `flex ${sender === "user" ? "justify-end" : "justify-start"}`;
+
+      const bubble = document.createElement("div");
+      bubble.className =
+        sender === "user"
+          ? "max-w-[82%] rounded-xl px-4 py-2.5 bg-cyan-400 text-navy-950 font-medium text-sm"
+          : "max-w-[88%] rounded-xl px-4 py-3 bg-navy-950 border border-slate-800 text-slate-200 text-sm leading-relaxed";
+
+      bubble.innerHTML = formatMarkdownLite(text);
+      wrapper.appendChild(bubble);
+      chatMessages.appendChild(wrapper);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function generateReply(rawQuery) {
+      const q = rawQuery.toLowerCase();
+
+      if (q.includes("22:00") || q.includes("10pm") || q.includes("10:00 pm") || q.includes("rollover") || q.includes("daily drawdown") || q.includes("reset")) {
+        return `**Daily Drawdown & 22:00 UTC (10:00 PM UTC) Reset:**\n• At the **22:00 UTC** daily rollover, Moneta Funded takes the **higher of balance or equity** and subtracts the daily loss limit (calculated from initial account size, including commissions and swaps).\n• Your account breaches if equity (including floating losses on open positions) drops below that level at any point during the day.\n• **Daily limits by model:** **1%** (1-Step Daily), **3%** (Instant Funding & Phoenix), **4%** (Instant Pro), and **4% or 5%** (2-Step, depending on configuration).`;
+      }
+
+      if (q.includes("1-step daily") || q.includes("instant pro") || q.includes("compare")) {
+        return `**1-Step Daily vs. Instant Pro:**\n• **1-Step Daily:** Single **3%** profit target, **1%** daily loss, **2%** static max loss (locks at starting balance after payout approval), no minimum profitable days, no consistency rule, **88%** split, and **daily payouts**.\n• **Instant Pro:** Funded from day one with no evaluation or consistency rule, **4%** daily loss, **8%** trailing max loss, **4%** max profit per day cap, **news trading allowed**, **88%** split, and **first payout on demand** (then every 14 days).`;
+      }
+
+      if (q.includes("news")) {
+        return `**News Trading Rules:**\n• **Allowed:** **Instant Pro** and **Phoenix Instant** permit news trading.\n• **Restricted:** On 1-Step, 2-Step, and Instant Funding, opening or closing trades within **5 minutes before or after** high-impact (red-folder) news is restricted (with a **2-hour prior-open carve-out** for closing trades, including TP/SL). **Sprint Challenge** prohibits news, gap, open, and close trading.`;
+      }
+
+      if (q.includes("payout") || q.includes("withdraw") || q.includes("moneta markets") || q.includes("bonus") || q.includes("split")) {
+        return `**Payouts, Splits & Moneta Markets Option:**\n• **Profit Split:** Standard **88%** across most programs (Instant Funding lets you pick **60% or 88%** at checkout; Sprint Challenge offers up to **100%** upon completion).\n• **Minimum & Processing:** Typically **$100** minimum withdrawal; processed **Monday–Friday, 9:00 AM–7:00 PM (GMT+10)** (bank cut-off 4:00 PM GMT+10), matching your deposit method/name after KYC/AML.\n• **Broker Credit Bonus:** Routing a payout to **Moneta Markets** can unlock a **20% credit bonus** or **100% matched credit bonus** (tradable margin/loss buffer; credit itself is non-withdrawable, profits earned from it are withdrawable).`;
+      }
+
+      if (q.includes("prohibit") || q.includes("ban") || q.includes("ea") || q.includes("restrict") || q.includes("country") || q.includes("countries") || q.includes("inactiv")) {
+        return `**Prohibited Conduct, EAs, Inactivity & Restricted Jurisdictions:**\n• **Banned:** Latency/price exploitation, arbitrage, tick scalping, HFT, order spamming/hyperactivity, and unapproved multi-account hedging/exploitation.\n• **EAs & Inactivity:** Self-developed EAs are generally permitted (not on Sprint), while **30 calendar days** without a trade triggers an inactivity breach.\n• **Restricted Jurisdictions:** Listed restrictions include **Iran, Afghanistan, Thailand, Cuba, Myanmar, North Korea, UAE, Venezuela, Vietnam**, and sanctioned regions.`;
+      }
+
+      if (q.includes("ant") || q.includes("anthropic") || q.includes("24-hour") || q.includes("broker")) {
+        return `**Moneta Markets (`ANT` / `ANT24`) vs. Moneta Funded:**\n• **Moneta Funded** is the proprietary trading evaluation/funding firm.\n• **Moneta Markets** is the parent brokerage—where Anthropic Share CFDs (**`ANT`** and 24-hour **`ANT24`**) were announced on the broker side rather than as a Moneta Funded challenge model.`;
+      }
+
+      const m = MODELS[activeModel];
+      return `For **${activeModel}** (${m.split}):\n• **Profit Target:** ${m.target}\n• **Daily / Max Loss:** ${m.dailyLoss} | ${m.maxLoss}\n• **Consistency & Min Days:** ${m.consistency} | ${m.minDays}\n• **Payouts:** ${m.payouts}\n\nAsk me about the **22:00 UTC reset**, **news trading**, **payouts/credit bonus**, **restricted countries**, or **ANT24** for a deeper breakdown.`;
+    }
+
+    function initQuickPrompts() {
+      quickPrompts.innerHTML = "";
+      QUICK_PROMPTS.forEach((prompt) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "px-3 py-1.5 rounded-full bg-navy-900 border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-cyan-300 whitespace-nowrap transition";
+        chip.textContent = prompt;
+        chip.onclick = () => {
+          appendMessage("user", prompt);
+          setTimeout(() => appendMessage("bot", generateReply(prompt)), 180);
+        };
+        quickPrompts.appendChild(chip);
+      });
+    }
+
+    function resetConversation() {
+      chatMessages.innerHTML = "";
+      appendMessage(
+        "bot",
+        "Welcome to the **Moneta Funded AI Support Prototype** (Case Study #02). Pick any challenge on the left or tap a prompt below to test how I handle rulebook and support questions."
+      );
+    }
+
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const val = chatInput.value.trim();
+      if (!val) return;
+      appendMessage("user", val);
+      chatInput.value = "";
+      setTimeout(() => appendMessage("bot", generateReply(val)), 180);
+    });
+
+    document.getElementById("clear-chat").addEventListener("click", resetConversation);
+
+    renderPills();
+    renderModelCard();
+    initQuickPrompts();
+    resetConversation();
+  </script>
+</body>
+</html>
